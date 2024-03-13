@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
 import { BookmarkSquareIcon } from "react-native-heroicons/solid";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import tw from 'twrnc';
 
 export default function NewsSection({ newsProps }) {
   const navigation = useNavigation();
@@ -102,30 +103,30 @@ export default function NewsSection({ newsProps }) {
   const renderItem = ({ item, index }) => {
     return (
       <TouchableOpacity
-        className="mb-4 mx-4 space-y-1"
+        class="space-y-1"
+        style={tw`mb-4 mx-4`}
         key={index}
         onPress={() => handleClick(item)}
       >
-        <View className="flex-row justify-start w-[100%]shadow-sm">
+        <View style={tw`flex-row justify-start w-[100%]shadow-sm`}>
           {/* Image */}
-          <View className="items-start justify-start w-[20%]">
+          <View style={tw`items-start justify-start w-[20%]`}>
             <Image
               source={{
                 uri:
                   item.urlToImage ||
                   "https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmV3c3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
               }}
-              style={{ width: hp(9), height: hp(10) }}
+              style={{...tw`rounded-lg`, width: hp(9), height: hp(10) }}
               resizeMode="cover"
-              className="rounded-lg"
             />
           </View>
 
           {/* Content */}
 
-          <View className="w-[70%] pl-4 justify-center space-y-1">
+          <View class="space-y-1" style={tw`w-[70%] pl-4 justify-center`}>
             {/* Author */}
-            <Text className="text-xs font-bold text-gray-900 dark:text-neutral-300">
+            <Text style={tw`text-xs font-bold text-gray-900 dark:text-neutral-300`}>
               {item?.author?.length > 20
                 ? item.author.slice(0, 20) + "..."
                 : item.author}
@@ -133,7 +134,6 @@ export default function NewsSection({ newsProps }) {
 
             {/* Title */}
             <Text
-              className="text-neutral-800 capitalize max-w-[90%] dark:text-white "
               style={{
                 fontSize: hp(1.7),
                 fontFamily: "SpaceGroteskBold",
@@ -145,13 +145,13 @@ export default function NewsSection({ newsProps }) {
             </Text>
 
             {/* Date */}
-            <Text className="text-xs text-gray-700 dark:text-neutral-300">
+            <Text style={tw`text-xs text-gray-700 dark:text-neutral-300`}>
               {formatDate(item.publishedAt)}
             </Text>
           </View>
 
           {/* Bookmark */}
-          <View className="w-[10%] justify-center">
+          <View style={tw`w-[10%] justify-center`}>
             <TouchableOpacity
               onPress={() => toggleBookmarkAndSave(item, index)}
             >
@@ -166,7 +166,7 @@ export default function NewsSection({ newsProps }) {
   };
 
   return (
-    <View className="space-y-2 bg-white dark:bg-neutral-900">
+    <View class="space-y-2" style={tw`bg-white dark:bg-neutral-900`}>
       {/* Header */}
 
       <FlatList

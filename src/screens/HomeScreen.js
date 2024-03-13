@@ -11,7 +11,7 @@ import { fetchBreakingNews, fetchRecommendedNews } from "../../utils/NewsApi";
 import MiniHeader from "../components/Header/MiniHeader";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import BreakingNews from "../components/BreakingNews";
-
+import tw from 'twrnc';
 export default function HomeScreen() {
   const { colorScheme, toggleColorScheme } = useColorScheme();
   
@@ -28,7 +28,7 @@ export default function HomeScreen() {
   });
 
   return (
-    <SafeAreaView className=" flex-1 bg-white dark:bg-neutral-900">
+    <SafeAreaView style={tw` flex-1 bg-white dark:bg-neutral-900`}>
       <StatusBar style={colorScheme == "dark" ? "light" : "dark"} />
 
       <View>
@@ -39,7 +39,7 @@ export default function HomeScreen() {
         {isBreakingLoading ? (
           <Loading />
         ) : (
-          <View className="">
+          <View style={tw``}>
             <MiniHeader label="Breaking News" />
             <BreakingNews label="Breaking News" data={data.articles} />
           </View>

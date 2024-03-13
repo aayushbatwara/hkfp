@@ -3,18 +3,19 @@ import React from "react";
 import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import { useNavigation } from "@react-navigation/native";
 import { useColorScheme } from "nativewind";
-
+import tw from 'twrnc';
 export default function Header() {
   const navigation = useNavigation();
   const { colorScheme, toggleColorScheme } = useColorScheme();
 
   return (
-    <View className="flex-row justify-between items-center mx-4 mt-4">
-      <View className="">
+    <View style={tw`flex-row justify-between items-center mx-4 mt-4`}>
+      <View style={tw``}>
         <Text
-          className="font-spaceGroteskBold text-2xl text-green-800 dark:text-white font-extrabold uppercase"
+        class="font-SpaceGroteskBold"
           style={{
             fontFamily: "SpaceGroteskBold",
+            ...tw`text-2xl text-green-800 dark:text-white font-extrabold uppercase`,
           }}
         >
           stack news
@@ -22,12 +23,12 @@ export default function Header() {
       </View>
 
       {/* Switch and Search Icon */}
-      <View className="flex-row space-x-4 rounded-full justify-center items-center">
+      <View class="space-x-4" style={tw`flex-row rounded-full justify-center items-center`}>
         <Switch value={colorScheme == "dark"} onChange={toggleColorScheme} />
 
         <TouchableOpacity
           onPress={() => navigation.navigate("Search")}
-          className="bg-gray-200 dark:bg-green-800  rounded-full p-2"
+          style={tw`bg-gray-200 dark:bg-green-800  rounded-full p-2`}
         >
           <MagnifyingGlassIcon
             size={25}

@@ -18,7 +18,7 @@ import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import { fetchDiscoverNews } from "../../utils/NewsApi";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { useNavigation } from "@react-navigation/native";
-
+import tw from 'twrnc';
 export default function DiscoverScreen() {
   const { colorScheme, toggleColorScheme } = useColorScheme();
   const [activeCategory, setActiveCategory] = useState("business");
@@ -43,15 +43,15 @@ export default function DiscoverScreen() {
   };
 
   return (
-    <SafeAreaView className="pt-8 bg-white dark:bg-neutral-900">
+    <SafeAreaView style={tw`pt-8 bg-white dark:bg-neutral-900`}>
       <StatusBar style={colorScheme == "dark" ? "light" : "dark"} />
 
       <View>
         {/* Header */}
-        <View className="px-4 mb-6 justify-between">
+        <View style={tw`px-4 mb-6 justify-between`}>
           <Text
-            className="text-3xl text-green-800 dark:text-white"
             style={{
+              ...tw`text-3xl text-green-800 dark:text-white`,
               fontFamily: "SpaceGroteskBold",
             }}
           >
@@ -59,8 +59,8 @@ export default function DiscoverScreen() {
           </Text>
 
           <Text
-            className="text-base text-gray-600 dark:text-neutral-300 "
             style={{
+              ...tw`text-base text-gray-600 dark:text-neutral-300 `,
               fontFamily: "SpaceGroteskMedium",
             }}
           >
@@ -69,20 +69,20 @@ export default function DiscoverScreen() {
         </View>
 
         {/* Search */}
-        <View className="mx-4 mb-8 flex-row p-2 py-3 justify-between items-center bg-neutral-100 rounded-full">
-          <TouchableOpacity className="pl-2">
+        <View style={tw`mx-4 mb-8 flex-row p-2 py-3 justify-between items-center bg-neutral-100 rounded-full`}>
+          <TouchableOpacity style={tw`pl-2`}>
             <MagnifyingGlassIcon size="25" color="gray" />
           </TouchableOpacity>
           <TextInput
             onPressIn={() => navigation.navigate("Search")}
             placeholder="Search for news"
             placeholderTextColor={"gray"}
-            className="pl-4 flex-1 font-medium text-black tracking-wider"
+            style={tw`pl-4 flex-1 font-medium text-black tracking-wider`}
           />
         </View>
 
         {/* Categories */}
-        <View className="flex-row mx-4">
+        <View style={tw`flex-row mx-4`}>
           <CategoriesCard
             categories={categories}
             activeCategory={activeCategory}
@@ -90,12 +90,12 @@ export default function DiscoverScreen() {
           />
         </View>
 
-        <View className="h-full">
+        <View style={tw`h-full`}>
           {/* Header Title */}
-          <View className="my-4 mx-4 flex-row justify-between items-center">
+          <View style={tw`my-4 mx-4 flex-row justify-between items-center`}>
             <Text
-              className="text-xl dark:text-white"
               style={{
+                ...tw`text-xl dark:text-white`,
                 fontFamily: "SpaceGroteskBold",
               }}
             >
@@ -103,8 +103,8 @@ export default function DiscoverScreen() {
             </Text>
 
             <Text
-              className="text-base text-green-800 dark:text-neutral-300"
               style={{
+                ...tw`text-base text-green-800 dark:text-neutral-300`,
                 fontFamily: "SpaceGroteskBold",
               }}
             >
@@ -113,7 +113,7 @@ export default function DiscoverScreen() {
           </View>
 
           {isDiscoverLoading ? (
-            <View className="justify-center items-center">
+            <View style={tw`justify-center items-center`}>
               <Loading />
             </View>
           ) : (

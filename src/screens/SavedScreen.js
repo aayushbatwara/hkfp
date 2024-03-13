@@ -7,6 +7,7 @@ import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { BookmarkSquareIcon } from "react-native-heroicons/solid";
 import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "nativewind";
+import tw from 'twrnc';
 
 export default function SavedScreen() {
   const { colorScheme, toggleColorScheme } = useColorScheme();
@@ -117,37 +118,37 @@ export default function SavedScreen() {
   const renderItem = ({ item, index }) => {
     return (
       <TouchableOpacity
-        className="mb-4 space-y-1 "
+      class="space-y-1"  
+      style={tw`mb-4`}
         key={index}
         onPress={() => handleClick(item)}
       >
-        <View className="flex-row justify-start w-[100%]shadow-sm">
+        <View style={tw`flex-row justify-start w-[100%]shadow-sm`}>
           {/* Image */}
-          <View className="items-start justify-start w-[20%]">
+          <View style={tw`items-start justify-start w-[20%]`}>
             <Image
               source={{
                 uri:
                   item.urlToImage ||
                   "https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmV3c3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
               }}
-              style={{ width: hp(9), height: hp(10) }}
+              style={{...tw`rounded-lg`,width: hp(9), height: hp(10) }}
               resizeMode="cover"
-              className="rounded-lg"
             />
           </View>
 
           {/* Content */}
 
-          <View className="w-[70%] pl-4 justify-center space-y-1">
+          <View class="space-y-1" style={tw`w-[70%] pl-4 justify-center`}>
             {/* Author */}
-            <Text className="text-xs font-bold text-gray-900 dark:text-neutral-300">
+            <Text style={tw`text-xs font-bold text-gray-900 dark:text-neutral-300`}>
               {item.author}
             </Text>
 
             {/* Title */}
             <Text
-              className="text-neutral-800 capitalize max-w-[90%] dark:text-white "
               style={{
+                ...tw`text-neutral-800 capitalize max-w-[90%] dark:text-white `,
                 fontSize: hp(1.7),
                 fontFamily: "SpaceGroteskBold",
               }}
@@ -158,13 +159,13 @@ export default function SavedScreen() {
             </Text>
 
             {/* Date */}
-            <Text className="text-xs text-gray-700 dark:text-neutral-300">
+            <Text style={tw`text-xs text-gray-700 dark:text-neutral-300`}>
               {formatDate(item.publishedAt)}
             </Text>
           </View>
 
           {/* Save */}
-          <View className="w-[10%] justify-center">
+          <View style={tw`w-[10%] justify-center`}>
             <TouchableOpacity
               onPress={() => toggleBookmarkAndSave(item, index)}
             >
@@ -177,14 +178,14 @@ export default function SavedScreen() {
   };
 
   return (
-    <SafeAreaView className="p-4 bg-white flex-1 dark:bg-neutral-900">
+    <SafeAreaView style={tw`p-4 bg-white flex-1 dark:bg-neutral-900`}>
       <StatusBar style={colorScheme == "dark" ? "light" : "dark"} />
       
       {/* Header  */}
-      <View className="flex-row justify-between items-center">
-        <Text
-          className="font-bold text-xl text-green-800 dark:text-white"
+      <View style={tw`flex-row justify-between items-center`}>
+        <Text          
           style={{
+            ...tw`font-bold text-xl text-green-800 dark:text-white`,
             fontFamily: "SpaceGroteskBold",
           }}
         >
@@ -192,11 +193,11 @@ export default function SavedScreen() {
         </Text>
         <TouchableOpacity
           onPress={clearSavedArticles}
-          className="bg-green-800 py-1 px-4 rounded-lg"
+          style={tw`bg-green-800 py-1 px-4 rounded-lg`}
         >
           <Text
-            className="font-bold text-lg text-white dark:text-white"
             style={{
+              ...tw`font-bold text-lg text-white dark:text-white`,
               fontFamily: "SpaceGroteskBold",
             }}
           >
@@ -205,7 +206,7 @@ export default function SavedScreen() {
         </TouchableOpacity>
       </View>
 
-      <View style={{ marginVertical: hp(2) }} className="space-y-2 ">
+      <View class="space-y-2" style={{marginVertical: hp(2) }}>
         <FlatList
           data={savedArticles}
           showsVerticalScrollIndicator={false}

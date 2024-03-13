@@ -11,7 +11,7 @@ import { WebView } from "react-native-webview";
 import { ChevronLeftIcon, ShareIcon } from "react-native-heroicons/outline";
 import { BookmarkSquareIcon } from "react-native-heroicons/solid";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import tw from 'twrnc';
 const { height, width } = Dimensions.get("window");
 
 export default function NewsDetails() {
@@ -88,19 +88,19 @@ export default function NewsDetails() {
 
   return (
     <>
-      <View className="w-full flex-row justify-between items-center px-4 pt-10 pb-4 bg-white">
-        <View className="bg-gray-100 p-2 rounded-full items-center justify-center">
+      <View style={tw`w-full flex-row justify-between items-center px-4 pt-10 pb-4 bg-white`}>
+        <View style={tw`bg-gray-100 p-2 rounded-full items-center justify-center`}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <ChevronLeftIcon size={25} strokeWidth={3} color="gray" />
           </TouchableOpacity>
         </View>
 
-        <View className="space-x-3 rounded-full items-center justify-center flex-row">
-          <TouchableOpacity className="bg-gray-100 p-2 rounded-full">
+        <View style={tw`space-x-3 rounded-full items-center justify-center flex-row`}>
+          <TouchableOpacity style={tw`bg-gray-100 p-2 rounded-full`}>
             <ShareIcon size={25} color="gray" strokeWidth={2} />
           </TouchableOpacity>
           <TouchableOpacity
-            className="bg-gray-100 p-2 rounded-full"
+            style={tw`bg-gray-100 p-2 rounded-full`}
             onPress={toggleBookmarkAndSave}
           >
             <BookmarkSquareIcon

@@ -7,13 +7,14 @@ import {
 } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
+import tw from 'twrnc';
 
 var { width, height } = Dimensions.get("window");
 
 export default function BreakingNewsCard({ item, handleClick }) {
   return (
     <TouchableWithoutFeedback onPress={() => handleClick(item)}>
-      <View className="relative">
+      <View style={tw`relative`}>
         <Image
           source={{
             uri:
@@ -23,9 +24,9 @@ export default function BreakingNewsCard({ item, handleClick }) {
           style={{
             width: width * 0.8,
             height: height * 0.22,
+            ...tw`rounded-3xl`,
           }}
           resizeMode="cover"
-          className="rounded-3xl"
         />
 
         <LinearGradient
@@ -43,18 +44,18 @@ export default function BreakingNewsCard({ item, handleClick }) {
         />
 
         {/* Title and Author */}
-        <View className="absolute bottom-6 left-4 justify-end h-[80%]">
-          <View className=" space-y-1">
-            <View className=" max-w-[98%]">
-              <Text className="text-white text-base font-semibold capitalize">
+        <View style={tw`absolute bottom-6 left-4 justify-end h-[80%]`}>
+          <View class="space-y-1" style={tw``}>
+            <View style={tw` max-w-[98%]`}>
+              <Text style={tw`text-white text-base font-semibold capitalize`}>
                 {item.title.length > 60
                   ? item.title.slice(0, 58) + "..."
                   : item.title.split("-")[0] || "N/A"}
               </Text>
             </View>
 
-            <View className="">
-              <Text className="text-neutral-300 text-sm font-medium">
+            <View style={tw``}>
+              <Text style={tw`text-neutral-300 text-sm font-medium`}>
                 {item?.author?.length > 20
                   ? item.author.slice(0, 20) + "..."
                   : item.author}

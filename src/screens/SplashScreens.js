@@ -6,6 +6,7 @@ import { useCallback } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
+import tw from 'twrnc';
 
 export default function SplashScreens() {
   const navigation = useNavigation();
@@ -36,7 +37,7 @@ export default function SplashScreens() {
   return (
     <View
       // source={require("../../assets/images/welcome/reporter.jpg")}
-      className="flex-1 justify-center items-center"
+      style={tw`flex-1 justify-center items-center`}
     >
       <LinearGradient
         colors={["rgba(0, 85, 0, 0.95)", "rgba(0, 85, 0, 0.95)"]}
@@ -53,10 +54,10 @@ export default function SplashScreens() {
       />
       <View
         onLayout={onLayoutRootView}
-        className=" "
+        style={tw` `}
         entering={FadeInDown.delay(200).duration(700).springify().damping(12)}
       >
-        <Text className="text-white text-3xl font-extrabold uppercase">
+        <Text style={tw`text-white text-3xl font-extrabold uppercase`}>
           Stacks news
         </Text>
       </View>
