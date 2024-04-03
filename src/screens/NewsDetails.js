@@ -95,7 +95,7 @@ export default function NewsDetails() {
           </TouchableOpacity>
         </View>
 
-        <View style={tw`space-x-3 rounded-full items-center justify-center flex-row`}>
+        <View class="space-x-4" style={tw`rounded-full items-center justify-center flex-row`}>
           <TouchableOpacity style={tw`bg-gray-100 p-2 rounded-full`}>
             <ShareIcon size={25} color="gray" strokeWidth={2} />
           </TouchableOpacity>

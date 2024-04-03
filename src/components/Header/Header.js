@@ -9,7 +9,7 @@ export default function Header() {
   const { colorScheme, toggleColorScheme } = useColorScheme();
 
   return (
-    <View style={tw`flex-row justify-between items-center mx-4 mt-4`}>
+    <View class="flex-row justify-between items-center mx-4 mt-4" style={tw`flex-row justify-between items-center mx-4 mt-4`}>
       <View style={tw``}>
         <Text
         class="font-SpaceGroteskBold"
@@ -25,6 +25,7 @@ export default function Header() {
       {/* Switch and Search Icon */}
       <View class="space-x-4" style={tw`flex-row rounded-full justify-center items-center`}>
         <Switch value={colorScheme == "dark"} onChange={toggleColorScheme} />
+        <Text>  </Text>
 
         <TouchableOpacity
           onPress={() => navigation.navigate("Search")}
@@ -34,6 +35,7 @@ export default function Header() {
             size={25}
             strokeWidth={2}
             color={colorScheme == "dark" ? "white" : "green"}
+            
           />
         </TouchableOpacity>
       </View>

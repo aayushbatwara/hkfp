@@ -32,8 +32,8 @@ export default function CategoriesCard({
             <TouchableOpacity
               key={index}
               onPress={() => handleChangeCategory(category.title)}
-              style={tw`flex items-center`}
-              class="space-y-1"
+              style={tw``}
+              class="space-y-1 flex items-center"
             >
               <View
               style={[tw`rounded-full py-2 px-4 ${activeButtonClass}`]}

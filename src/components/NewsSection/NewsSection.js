@@ -104,7 +104,7 @@ export default function NewsSection({ newsProps }) {
     return (
       <TouchableOpacity
         class="space-y-1"
-        style={tw`mb-4 mx-4`}
+        style={tw`mb-4 mx-4 `}
         key={index}
         onPress={() => handleClick(item)}
       >
@@ -126,7 +126,9 @@ export default function NewsSection({ newsProps }) {
 
           <View class="space-y-1" style={tw`w-[70%] pl-4 justify-center`}>
             {/* Author */}
-            <Text style={tw`text-xs font-bold text-gray-900 dark:text-neutral-300`}>
+            {/* <Text style={tw`text-xs font-bold text-gray-900 dark:text-neutral-300`}> */}
+            <Text style={tw`text-xs font-bold text-white dark:text-neutral-300`}>
+
               {item?.author?.length > 20
                 ? item.author.slice(0, 20) + "..."
                 : item.author}
@@ -137,6 +139,7 @@ export default function NewsSection({ newsProps }) {
               style={{
                 fontSize: hp(1.7),
                 fontFamily: "SpaceGroteskBold",
+                color: "white",
               }}
             >
               {item.title.length > 50
@@ -166,7 +169,9 @@ export default function NewsSection({ newsProps }) {
   };
 
   return (
-    <View class="space-y-2" style={tw`bg-white dark:bg-neutral-900`}>
+    // <View class="space-y-2" style={tw`bg-white dark:bg-neutral-900`}>
+    <View class="space-y-2" style={tw`bg-black dark:bg-neutral-900`}>
+
       {/* Header */}
 
       <FlatList
