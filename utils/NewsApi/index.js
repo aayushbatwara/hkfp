@@ -1,9 +1,8 @@
-import { newsApiKey } from "./ApiKey";
 import axios from "axios";
 import { parseString } from 'react-native-xml2js'; // XML parsing library
 
 // Endpoints
-
+export const newsApiKey = "d536f983b77e4d68bd227bf0d9b89474";
 const apiBaseUrl = "https://newsapi.org/v2";
 const country = "us";
 const breakingNewsUrl = `${apiBaseUrl}/top-headlines?country=${country}&apiKey=${newsApiKey}`;
