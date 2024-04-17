@@ -4,12 +4,6 @@
 install dev dependencies
 
 `npm install`
-
-Get API Keys
-`create a file utils/ApiKey.js`
-
-Add the line
-`export const newsApiKey = "d536f983b77e4d68bd227bf0d9b89474";`
  
 Run The app
 
