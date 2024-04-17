@@ -44,23 +44,23 @@ export default function BreakingNewsCard({ item, handleClick }) {
         />
 
         {/* Title and Author */}
-        <View style={tw`absolute bottom-6 left-4 justify-end h-[80%]`}>
+        
+        <View style={tw`absolute bottom-2 left-4 justify-end h-[60%]`}>
+        <View style={tw``}>
+              <Text style={tw`text-neutral-300 text-sm font-medium`}>
+                {item?.author}
+              </Text>
+            </View>
           <View class="space-y-1" style={tw``}>
             <View style={tw` max-w-[98%]`}>
               <Text style={tw`text-white text-base font-semibold capitalize`}>
-                {item.title.length > 60
-                  ? item.title.slice(0, 58) + "..."
-                  : item.title.split("-")[0] || "N/A"}
+                {item.title}
+                {/* {item.title.length > 100
+                  ? item.title.slice(0, 100) + "..."
+                  : item.title.split("-")[0] || "N/A"} */}
               </Text>
             </View>
 
-            <View style={tw``}>
-              <Text style={tw`text-neutral-300 text-sm font-medium`}>
-                {item?.author?.length > 20
-                  ? item.author.slice(0, 20) + "..."
-                  : item.author}
-              </Text>
-            </View>
           </View>
         </View>
       </View>

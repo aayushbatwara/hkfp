@@ -40,7 +40,7 @@ export default function SplashScreens() {
       style={tw`flex-1 justify-center items-center`}
     >
       <LinearGradient
-        colors={["rgba(0, 85, 0, 0.95)", "rgba(0, 85, 0, 0.95)"]}
+        colors={["rgba(8, 76, 156, 0.95)", "rgba(8, 76, 156, 0.95)"]}
         style={{
           position: "absolute",
           bottom: 0,
@@ -58,7 +58,10 @@ export default function SplashScreens() {
         entering={FadeInDown.delay(200).duration(700).springify().damping(12)}
       >
         <Text style={tw`text-white text-3xl font-extrabold uppercase`}>
-          Stacks news
+          Hong Kong
+        </Text>
+        <Text style={tw`text-white text-3xl font-extrabold uppercase`}>
+          Free Press
         </Text>
       </View>
     </View>

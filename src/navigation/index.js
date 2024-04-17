@@ -31,9 +31,11 @@ export default function AppNavigation() {
 
             if (route.name === "Home") {
               iconName = "home";
-            } else if (route.name === "Discover") {
+            }
+             else if (route.name === "Discover") {
               iconName = "compass-outline";
-            } else if (route.name === "Saved") {
+            }
+             else if (route.name === "Saved") {
               iconName = "bookmark-outline";
             } else if (route.name === "Search") {
               iconName = "search-outline";
@@ -45,12 +47,11 @@ export default function AppNavigation() {
               <Ionicons
                 name={iconName}
                 size={customizeSize}
-                color={focused ? "green" : "gray"}
+                color={focused ? colorScheme == "dark" ? "white" : "blue" : "gray" }
               />
             );
           },
-
-          tabBarActiveTintColor: "green",
+          tabBarActiveTintColor: colorScheme == "dark" ? "white" : "blue" ,
           tabBarInactiveTintColor: "gray",
           tabBarLabelStyle: {
             fontSize: 12,
@@ -66,9 +67,9 @@ export default function AppNavigation() {
         })}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Discover" component={DiscoverScreen} />
+        {/* <Tab.Screen name="Discover" component={DiscoverScreen} /> */}
         <Tab.Screen name="Saved" component={SavedScreen} />
-        <Tab.Screen name="Search" component={SearchScreen} />
+        {/* <Tab.Screen name="Search" component={SearchScreen} /> */}
       </Tab.Navigator>
     );
   };

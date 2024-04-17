@@ -20,7 +20,6 @@ export default function NewsDetails() {
   const navigation = useNavigation();
   const [isBookmarked, toggleBookmark] = useState(false);
 
-  // console.log("item URL", item.url);
 
   const toggleBookmarkAndSave = async () => {
     try {
@@ -105,7 +104,7 @@ export default function NewsDetails() {
           >
             <BookmarkSquareIcon
               size={25}
-              color={isBookmarked ? "green" : "gray"}
+              color={isBookmarked ? "blue" : "gray"}
               strokeWidth={2}
             />
           </TouchableOpacity>
@@ -121,7 +120,7 @@ export default function NewsDetails() {
       {visible && (
         <ActivityIndicator
           size={"large"}
-          color={"green"}
+          color={"blue"}
           style={{
             position: "absolute",
             top: height / 2,

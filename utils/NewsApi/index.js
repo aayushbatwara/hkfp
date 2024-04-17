@@ -31,20 +31,39 @@ const newsApiCall = async (endpoints, params) => {
   }
 };
 
-export const fetchBreakingNews = async () => {
-  // const result = await newsApiCall(breakingNewsUrl);
-  // console.log('Breaking news:', result);
-  const result2 = await handleFetchFeed();
-  // result2.articles = result2.articles[0,3];
-  return result2;
+// export const fetchBreakingNews = async () => {
+//   const result = await handleFetchFeed();
+//   return result;
+// };
+export const fetchTodaysNews = async () => {
+  const result = await handleFetchFeed();
+
+  const today = new Date(); // Get the current date
+
+  const filteredArticles = result.articles.filter((item) => {
+    const itemDate = new Date(item.publishedAt);
+    return (itemDate.getDate() === today.getDate());
+  });
+
+  result.articles = filteredArticles
+  return result;
 };
 
-export const fetchRecommendedNews = async () => {
-  // return await newsApiCall(recommendedNewsUrl);
-  const result2 = await handleFetchFeed();
-  // result2.articles = result2.articles[3,result2.totalResults];
-  return result2;
+
+export const fetchNotTodaysNews = async () => {
+  const result = await handleFetchFeed();
+
+  const today = new Date(); // Get the current date
+
+  const filteredArticles = result.articles.filter((item) => {
+    const itemDate = new Date(item.publishedAt);
+    return (itemDate.getDate() != today.getDate());
+  });
+
+  result.articles = filteredArticles
+  return result;
 };
+
 
 export const fetchDiscoverNews = async (discover) => {
   return await newsApiCall(discoverNewsUrl(discover));
@@ -61,6 +80,7 @@ const handleFetchFeed = async () => {
     const response = await fetch('https://www.hongkongfp.com/feed/');
     const data = await response.text();
     jsonData = await parseRSS(data);
+    
     return jsonData;
     } catch (error) {
     console.log('Error fetching RSS feed:', error);
@@ -77,15 +97,13 @@ const parseRSS = (xmlData) => {
       const items = result?.rss?.channel[0]?.item || [];
       const articles = items.map((item) => {
         const url = item.link[0];
-        // const imgURL = item['media:content'][0].$.url;
         const urlToImage = item.description[0].match(/<img[^>]+src\s*=\s*['"]([^'"]+)['"][^>]*>/i)[1]
         const source = {id: 'HKFP', name: 'Hong Kong Free Press'};
         const author = item['dc:creator'][0]; 
         const description = "description";
-        const publishedAt = (new Date()).toISOString();
+        const publishedAt = item['pubDate'][0];
         const content = "Joe Mama";
         const title = item.title[0];
-
         return { url, urlToImage, source, author, title, description, publishedAt, content};
       });
       const status = "ok";

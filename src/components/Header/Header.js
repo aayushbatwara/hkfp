@@ -20,10 +20,10 @@ export default function Header() {
         class="font-SpaceGroteskBold"
           style={{
             fontFamily: "SpaceGroteskBold",
-            ...tw`text-2xl text-green-800 dark:text-white font-extrabold uppercase`,
+            ...tw`text-2xl text-blue-600 dark:text-white font-extrabold uppercase`,
           }}
         >
-          stack news
+          HK Free Press
         </Text>
       </View>
 
@@ -32,17 +32,18 @@ export default function Header() {
         <Switch value={colorScheme == "dark"} onChange={toggleColorScheme} />
         <Text>  </Text>
 
-        <TouchableOpacity
+        {/* Search */}
+        {/* <TouchableOpacity
           onPress={() => navigation.navigate("Search")}
-          style={tw`bg-gray-200 dark:bg-green-800  rounded-full p-2`}
+          style={tw`bg-gray-200 dark:bg-blue-800  rounded-full p-2`}
         >
           <MagnifyingGlassIcon
             size={25}
             strokeWidth={2}
-            color={colorScheme == "dark" ? "white" : "green"}
+            color={colorScheme == "dark" ? "white" : "blue"}
             
           />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </View>
   );

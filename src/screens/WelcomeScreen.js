@@ -20,10 +20,10 @@ export default function Welcome() {
   return (
     <View
       // source={require("../../assets/images/welcome/reporter.jpg")}
-      style={tw`flex-1 justify-center items-center pb-6 bg-green-900`}
+      style={tw`flex-1 justify-center items-center pb-6 bg-blue-900`}
     >
       <LinearGradient
-        colors={["transparent", "rgba(0,0,0,0.9)"]}
+        colors={["transparent", "rgba(8,76,156,0.9)"]}
         style={{
           position: "absolute",
           bottom: 0,
@@ -40,21 +40,21 @@ export default function Welcome() {
       <Text class="font-SpaceGroteskBold"
   style={tw`font-bold text-4xl shadow-2xl text-white text-center tracking-wider text-[${wp(10)}px]`}
       >
-  Stay Informed from Day One
+  This app is a little wonky.
 </Text>
 <Text
   class="font-SpaceGroteskMedium"
-  style={tw`font-bold text-white text-center max-w-[85%] leading-6 tracking-wider text-[${wp(4)}px]`}
+  style={tw`font-bold text-white text-center max-w-[100%] leading-6 tracking-wider text-[${wp(4)}px]`}
 >
-  Discover the Latest News with our Seamless Onboarding Experience.
+  It was made across couple weekends by a junior dev. If you find it useful or want a feature, shoot an email :) aayushbatwara@gmail.com
 </Text>
       </View>
 
       <TouchableOpacity
-        style={tw`bg-white rounded-full p-4 justify-center items-center w-[90%] mt-8`}
+        style={tw`bg-white rounded-full p-4 justify-center items-center w-[80%] mt-8`}
         onPress={() => navigation.navigate("HomeTabs")}
       >
-        <Text style={tw`text-base text-green-900`}>Getting Started</Text>
+        <Text style={tw`text-base text-blue-900`}>Let me read the news</Text>
       </TouchableOpacity>
     </View>
   );

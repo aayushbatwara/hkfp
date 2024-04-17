@@ -5,7 +5,7 @@ import tw from 'twrnc';
 export default function Loading() {
   return (
     <View style={tw`flex-1 justify-center items-center`}>
-      <ActivityIndicator size="large" color="green" />
+      <ActivityIndicator size="large" color="blue" />
     </View>
   );
 }

@@ -5,11 +5,13 @@ import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
 import { BookmarkSquareIcon } from "react-native-heroicons/solid";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import tw from 'twrnc';
+import { useColorScheme } from "nativewind";
 
 export default function NewsSection({ newsProps }) {
   const navigation = useNavigation();
   const [urlList, setUrlList] = useState([]);
   const [bookmarkStatus, setBookmarkStatus] = useState([]);
+  const { colorScheme, toggleColorScheme } = useColorScheme();
 
   // Function to format the date
   function formatDate(isoDate) {
@@ -104,11 +106,11 @@ export default function NewsSection({ newsProps }) {
     return (
       <TouchableOpacity
         class="space-y-1"
-        style={tw`mb-4 mx-4 `}
+        style={tw`mb-4 mx-2`}
         key={index}
         onPress={() => handleClick(item)}
       >
-        <View style={tw`flex-row justify-start w-[100%]shadow-sm`}>
+        <View style={tw`flex-row justify-start w-[95%]shadow-sm`}>
           {/* Image */}
           <View style={tw`items-start justify-start w-[20%]`}>
             <Image
@@ -124,10 +126,10 @@ export default function NewsSection({ newsProps }) {
 
           {/* Content */}
 
-          <View class="space-y-1" style={tw`w-[70%] pl-4 justify-center`}>
+          <View class="space-y-1" style={{...tw`w-[73%] pl-4 justify-center`}}>
             {/* Author */}
             {/* <Text style={tw`text-xs font-bold text-gray-900 dark:text-neutral-300`}> */}
-            <Text style={tw`text-xs font-bold text-white dark:text-neutral-300`}>
+            <Text style={tw`text-xs font-bold text-${colorScheme == "dark" ? 'white' : 'neutral-900'}`}>
 
               {item?.author?.length > 20
                 ? item.author.slice(0, 20) + "..."
@@ -139,27 +141,28 @@ export default function NewsSection({ newsProps }) {
               style={{
                 fontSize: hp(1.7),
                 fontFamily: "SpaceGroteskBold",
-                color: "white",
+                color: colorScheme == "dark" ? "white" : "black",
               }}
             >
-              {item.title.length > 50
-                ? item.title.slice(0, 50) + "..."
+              {item.title.length > 150
+                ? item.title.slice(0, 150) + "..."
                 : item.title}
             </Text>
 
             {/* Date */}
-            <Text style={tw`text-xs text-gray-700 dark:text-neutral-300`}>
-              {formatDate(item.publishedAt)}
+            <Text style={tw`text-xs font-bold text-${colorScheme == "dark" ? 'white' : 'gray-700'}`}>
+
+              {formatDate(item?.publishedAt)}
             </Text>
           </View>
 
           {/* Bookmark */}
-          <View style={tw`w-[10%] justify-center`}>
+          <View style={{...tw`w-[5%] justify-center`}}>
             <TouchableOpacity
               onPress={() => toggleBookmarkAndSave(item, index)}
             >
               <BookmarkSquareIcon
-                color={bookmarkStatus[index] ? "green" : "gray"}
+                color={bookmarkStatus[index] ? "blue" : "gray"}
               />
             </TouchableOpacity>
           </View>
@@ -170,7 +173,8 @@ export default function NewsSection({ newsProps }) {
 
   return (
     // <View class="space-y-2" style={tw`bg-white dark:bg-neutral-900`}>
-    <View class="space-y-2" style={tw`bg-black dark:bg-neutral-900`}>
+    <View style={tw`bg-${colorScheme == "dark" ? 'black' : 'white'}`} class="space-y-2">
+
 
       {/* Header */}
 
@@ -185,32 +189,3 @@ export default function NewsSection({ newsProps }) {
     </View>
   );
 }
-
-// useEffect(() => {
-
-//   const loadSavedArticles = async () => {
-//     try {
-//       const savedArticles = await AsyncStorage.getItem("savedArticles");
-//       const savedArticlesArray = savedArticles
-//         ? JSON.parse(savedArticles)
-//         : [];
-
-//       // Check if each URL in 'urlList' exists in the bookmarked list
-//       const isArticleBookmarkedList = urlList.map((url) =>
-//         savedArticlesArray.some((savedArticle) => savedArticle.url === url)
-//       );
-
-//       // Set the bookmark status for all items based on the loaded data
-//       setBookmarkStatus(isArticleBookmarkedList);
-//       console.log("Check if the current article is in bookmarks");
-//     } catch (error) {
-//       console.log("Error Loading Saved Articles", error);
-//     }
-//   };
-
-//   loadSavedArticles();
-// }, [urlList]);
-
-// contentContainerStyle={{
-//         paddingBottom: hp(110),
-//       }}

@@ -51,7 +51,7 @@ export default function DiscoverScreen() {
         <View style={tw`px-4 mb-6 justify-between`}>
           <Text
             style={{
-              ...tw`text-3xl text-green-800 dark:text-white`,
+              ...tw`text-3xl text-blue-600 dark:text-white`,
               fontFamily: "SpaceGroteskBold",
             }}
           >
@@ -104,7 +104,7 @@ export default function DiscoverScreen() {
 
             <Text
               style={{
-                ...tw`text-base text-green-800 dark:text-neutral-300`,
+                ...tw`text-base text-blue-600 dark:text-neutral-300`,
                 fontFamily: "SpaceGroteskBold",
               }}
             >
