@@ -1,4 +1,13 @@
 
+## Original App vs This App
+https://github.com/aayushbatwara/hkfp/assets/42208400/ef3b09c5-1cd6-477a-b7b0-90134720ef9e
+
+Features not in video:
+- Notifications
+- Dark mode
+- Saved articles
+
+
 ## Get Started
 
 install dev dependencies
