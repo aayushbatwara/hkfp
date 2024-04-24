@@ -2,7 +2,7 @@
   "expo": {
     "name": "newsapp",
     "slug": "newsapp",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -16,7 +16,8 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.aayush17.newsapp"
+      "bundleIdentifier": "com.aayush17.newsapp",
+      "buildNumber":"2"
     },
     "android": {
       "adaptiveIcon": {

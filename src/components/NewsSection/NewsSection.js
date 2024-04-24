@@ -9,9 +9,26 @@ import { useColorScheme } from "nativewind";
 
 export default function NewsSection({ newsProps }) {
   const navigation = useNavigation();
+  const [timedData, setTimedData] = useState([])
   const [urlList, setUrlList] = useState([]);
   const [bookmarkStatus, setBookmarkStatus] = useState([]);
   const { colorScheme, toggleColorScheme } = useColorScheme();
+
+  useEffect(() => {
+    filterTimedData();
+  }, [newsProps])
+
+  const filterTimedData = () => {
+    if (newsProps){
+      const today = new Date(); // Get the current date
+      const thisTimeYesterday = new Date(today.setDate(today.getDate() - 1))  
+      const filteredArticles = newsProps.filter((item) => {
+        const itemDate = new Date(item.publishedAt);
+        return (itemDate.getTime() <= thisTimeYesterday.getTime());
+      });
+      setTimedData(filteredArticles);
+    };
+    }
 
   // Function to format the date
   function formatDate(isoDate) {
@@ -181,7 +198,7 @@ export default function NewsSection({ newsProps }) {
       <FlatList
         nestedScrollEnabled={true}
         scrollEnabled={false}
-        data={newsProps}
+        data={timedData}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item, index) => index.toString()}
         renderItem={renderItem}
