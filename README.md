@@ -1,6 +1,6 @@
 
-## Original App vs This App
-https://github.com/aayushbatwara/hkfp/assets/42208400/ef3b09c5-1cd6-477a-b7b0-90134720ef9e
+## 10 seconds of Original App vs This App
+https://github.com/aayushbatwara/hkfp/assets/42208400/8c27d6ca-d86a-49b6-bdd8-14e984f90202
 
 Features not in video:
 - Notifications
