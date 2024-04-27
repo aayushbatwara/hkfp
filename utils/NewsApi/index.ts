@@ -32,6 +32,14 @@ class Categories extends Map<string, number>{
     const topCategories = Array.from(this.keys()).slice(-5);
     return topCategories.reverse();
   }
+  returnRegularCategories(): string[] {
+    let someCategories: string[] = ["Hong Kong", "China", "Taiwan", "USA", "India", "Russia"];
+    for (let index = 0; index < someCategories.length; index++) {
+      const element = someCategories[index];
+      if (!(this.has(element))) delete someCategories[index]
+    }
+    return someCategories;
+  }
 
 }
 
@@ -106,7 +114,8 @@ const parseRSS = (xmlData: string): Promise<Feed> => { // Added return type
         });
         const status = "ok";
         const totalResults = items.length;
-        const topCategories:string[] = myCategories.returnTopCategories()
+        // const topCategories:string[] = myCategories.returnTopCategories()
+        const topCategories:string[] = myCategories.returnRegularCategories();
         const jsonData: Feed = { status, totalResults, articles, topCategories};
         resolve(jsonData);
       }

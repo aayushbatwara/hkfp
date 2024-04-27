@@ -21,13 +21,13 @@ const HorizontalScrollComponent = ({ selectedItems, handleItemPress, categories 
               onPress={() => handleItemPress(item)}
               style={[
                 styles.item,
+                isDarkMode && styles.itemDark,
                 selectedItems.includes(item) && styles.selectedItem,
                 selectedItems.includes(item) && isDarkMode && styles.selectedItemDark,
-                isDarkMode && styles.itemDark,
               ]}
             >
               <Text style={[styles.itemText, isDarkMode && styles.itemTextDark]}>
-                {item}
+                {item == "China" ? "Mainland" : item}
               </Text>
             </TouchableOpacity>
           ))}
