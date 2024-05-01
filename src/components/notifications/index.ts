@@ -5,6 +5,7 @@ import * as Notifications from "expo-notifications";
 import Constants from "expo-constants";
 
 import { Platform, Alert} from "react-native";
+import { addToken } from "./FirebaseService";
 
 export interface PushNotificationState {
   expoPushToken?: Notifications.ExpoPushToken;
@@ -16,7 +17,7 @@ export const usePushNotifications = (): PushNotificationState => {
     handleNotification: async () => ({
       shouldPlaySound: false,
       shouldShowAlert: true,
-      shouldSetBadge: false,
+      shouldSetBadge: true,
     }),
   });
 //states
@@ -36,6 +37,7 @@ export const usePushNotifications = (): PushNotificationState => {
   async function registerForPushNotificationsAsync() {
     let token;
     if (Device.isDevice) {
+      console.log("Im here")
       const { status: existingStatus } =
         await Notifications.getPermissionsAsync();
       let finalStatus = existingStatus;
@@ -65,6 +67,7 @@ export const usePushNotifications = (): PushNotificationState => {
       });
     }
 
+    if (token) addToken(token.data)
     return token;
   }
 

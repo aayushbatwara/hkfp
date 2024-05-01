@@ -13,10 +13,14 @@ import MiniHeader from "../components/Header/MiniHeader";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import BreakingNews from "../components/BreakingNews";
 import tw from 'twrnc';
+import { usePushNotifications } from "../components/notifications";
 export default function HomeScreen() {
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
   const [filteredArticles, setFilteredArticles] = useState<Article[]>([]);
   const { colorScheme, toggleColorScheme } = useColorScheme();
+  const {expoPushToken, notification} = usePushNotifications();
+  console.log(expoPushToken?.data ?? "");
+
 
   const { data: rawData, isLoading: isDataLoading } = useQuery({
     queryKey: ["rawDataKey"],
