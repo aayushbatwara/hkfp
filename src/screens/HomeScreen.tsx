@@ -1,6 +1,6 @@
 import { Text, View, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 import { useColorScheme } from "nativewind";
 import { StatusBar } from "expo-status-bar";
 import Loading from "../components/Loading/Loading";
@@ -20,6 +20,7 @@ export default function HomeScreen() {
   const { colorScheme, toggleColorScheme } = useColorScheme();
   const {expoPushToken, notification} = usePushNotifications();
   console.log(expoPushToken?.data ?? "");
+  const insets = useSafeAreaInsets();
 
 
   const { data: rawData, isLoading: isDataLoading } = useQuery({
@@ -67,42 +68,31 @@ export default function HomeScreen() {
 
   return (
     // <SafeAreaView style={tw`flex-1 bg-white dark:bg-neutral-900`}>
-    <SafeAreaView style={[tw`flex-1`, { backgroundColor: colorScheme === 'dark' ? '#0d0008' : 'white' }]}>
+    <View style={[tw`flex-1`, { backgroundColor: colorScheme === 'dark' ? '#0d0008' : 'white', paddingTop: insets.top,
+      // paddingBottom: insets.bottom,
+      paddingLeft: insets.left,
+      paddingRight: insets.right,}]}>
     <StatusBar style={colorScheme == "dark" ? "light" : "dark"} />
-      <View>
+    <ScrollView style={[tw`grow`]} contentContainerStyle={{padding: 0}}>
         {/* Header */}
         <Header />
-
         <Categories selectedItems={selectedItems} categories={rawData?.topCategories} handleItemPress={handleItemPress}></Categories>
-
         {/* Breaking News */}
-        {isDataLoading ? (
-          <Loading />
-        ) : (
+        {isDataLoading ? (<Loading />) : (
           <View style={tw``}>
             <MiniHeader label="Last 24 Hours" />
             <BreakingNews label="Breaking News" newsProps={filteredArticles}/>
           </View>
         )}
-
         {/* Recommended News */}
         <View>
           <MiniHeader label="Recent News" />
-          <ScrollView
-            contentContainerStyle={{
-              paddingBottom: hp(80),
-            }}
-          >
-            {isDataLoading ? (
-              <Loading />
-            ) : (
-              <NewsSection
-                newsProps={filteredArticles}
-              />
-            )}
-          </ScrollView>
+          {/* <ScrollView contentContainerStyle={{paddingBottom: hp(80),}}> */}
+          {isDataLoading ? (<Loading />) : (<NewsSection newsProps={filteredArticles}/>)}
+          {/* </ScrollView> */}
         </View>
-      </View>
-    </SafeAreaView>
+
+      </ScrollView>
+    </View>
   );
 }

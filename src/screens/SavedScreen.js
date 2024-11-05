@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
+import { View, Text, TouchableOpacity, Image, FlatList, ScrollView } from "react-native";
 import React, { useCallback, useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
@@ -180,7 +180,7 @@ export default function SavedScreen() {
   return (
     <SafeAreaView style={tw`p-4 bg-white flex-1 dark:bg-neutral-900`}>
       <StatusBar style={colorScheme == "dark" ? "light" : "dark"} />
-      
+  
       {/* Header  */}
       <View style={tw`flex-row justify-between items-center`}>
         <Text          
@@ -217,6 +217,7 @@ export default function SavedScreen() {
           }}
         />
       </View>
+      
     </SafeAreaView>
   );
 }
