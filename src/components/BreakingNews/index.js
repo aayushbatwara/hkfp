@@ -38,7 +38,7 @@ export default function BreakingNews({ newsProps, label }) {
         renderItem={({ item }) => (
           <BreakingNewsCard item={item} handleClick={handleClick} />
         )}
-        firstItem={1}
+        firstItem={0}
         inactiveSlideScale={0.86}
         inactiveSlideOpacity={0.6}
         sliderWidth={width}

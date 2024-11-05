@@ -190,10 +190,7 @@ export default function NewsSection({ newsProps }) {
 
   return (
     // <View class="space-y-2" style={tw`bg-white dark:bg-neutral-900`}>
-    <View style={tw`bg-${colorScheme == "dark" ? 'black' : 'white'}`} class="space-y-2">
-
-
-      {/* Header */}
+    <View style={tw`bg-${colorScheme == "dark" ? 'black' : 'white'}`}>
 
       <FlatList
         nestedScrollEnabled={true}
